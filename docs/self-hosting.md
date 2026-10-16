@@ -557,6 +557,9 @@ both. The redirect URI to register is
 | `BLOB_ACCESS_KEY_ID`                        | unset       | Override AWS-SDK default credential chain.                                                                                                                                                                                                                                                          |
 | `BLOB_SECRET_ACCESS_KEY`                    | unset       | Override AWS-SDK default credential chain.                                                                                                                                                                                                                                                          |
 | `BLOB_FORCE_PATH_STYLE`                     | `false`     | Set to `true` for MinIO and most non-AWS S3 implementations.                                                                                                                                                                                                                                        |
+| `AZURE_STORAGE_ACCOUNT`                     | unset       | Azure Blob Storage Account Name. If set, Azure Blob Storage is used instead of S3. |
+| `AZURE_STORAGE_KEY`                         | unset       | Azure Blob Storage Account Key. Required if AZURE_STORAGE_ACCOUNT is set. |
+| `AZURE_STORAGE_CONNECTION_STRING`           | unset       | Azure Blob Storage Connection String. An alternative to Account/Key. |
 
 `SLASHDOCS_KV_EVENTS_MODE=auto` attempts `LISTEN/NOTIFY` only when
 `SLASHDOCS_KV_EVENTS_LISTENER_DATABASE_URL` is explicitly set. Without that URL it

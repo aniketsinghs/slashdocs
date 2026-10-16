@@ -575,6 +575,16 @@ func newBlobStore(ctx context.Context) (blob.Store, error) {
 	if bucket == "" {
 		return nil, fmt.Errorf("BLOB_BUCKET is required")
 	}
+
+	if os.Getenv("AZURE_STORAGE_CONNECTION_STRING") != "" || os.Getenv("AZURE_STORAGE_ACCOUNT") != "" {
+		return blob.NewAzure(ctx, blob.AzureConfig{
+			Container:        bucket,
+			AccountName:      os.Getenv("AZURE_STORAGE_ACCOUNT"),
+			AccountKey:       os.Getenv("AZURE_STORAGE_KEY"),
+			ConnectionString: os.Getenv("AZURE_STORAGE_CONNECTION_STRING"),
+		})
+	}
+
 	region := os.Getenv("BLOB_REGION")
 	if region == "" {
 		region = os.Getenv("AWS_REGION")
